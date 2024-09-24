@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: my_first_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: my_second_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+sources:
+  - name: hevodata  # This is the name you will reference in dbt
+    schema: Public  # Your Snowflake schema
+    database: PC_HEVODATA_DB  # Your Snowflake database
+    tables:
+      - name: HEVO_RAW_ORDERS
+        description: "Hevo raw orders table from Snowflake"
